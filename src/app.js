@@ -4,6 +4,8 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import morgan from "morgan";
+import authorRouter from "./routes/authorRouter";
+import bookRouter from "./routes/bookRouter";
 
 const app = express();
 
@@ -21,6 +23,10 @@ app.listen(8000, () => {
   console.log("Server is Running");
 });
 
-app.get("/api", (req, res) => {
+//ROUTES
+app.use("/v1/author", authorRouter);
+app.use("/v1/book", bookRouter);
+
+app.get("/", (req, res) => {
   res.status(200).json("Hello Worldc");
 });
