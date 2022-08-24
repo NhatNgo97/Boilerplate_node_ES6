@@ -4,8 +4,11 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import morgan from "morgan";
+
 import authorRouter from "./routes/authorRouter";
 import bookRouter from "./routes/bookRouter";
+import authRouter from "./routes/authRouter";
+import userRouter from "./routes/userRouter";
 
 const app = express();
 
@@ -26,6 +29,8 @@ app.listen(8000, () => {
 //ROUTES
 app.use("/v1/author", authorRouter);
 app.use("/v1/book", bookRouter);
+app.use("/v1/auth", authRouter);
+app.use("/v1/user", userRouter);
 
 app.get("/", (req, res) => {
   res.status(200).json("Hello Worldc");
